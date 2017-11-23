@@ -42,6 +42,7 @@
           font-size: 80px;
           color: #00a99d;
       }
+   
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
     <script src="https://sdk.accountkit.com/en_US/sdk.js"></script>
@@ -90,6 +91,9 @@
       </div>
     </nav>
     <header class="header bg-fixed gradient-animation">
+        <div id='stars'></div>
+        <div id='stars2'></div>
+        <div id='stars3'></div>
       <div class="container text-center">
         <div class="row">
           <div class="text fs fs-20 ">
