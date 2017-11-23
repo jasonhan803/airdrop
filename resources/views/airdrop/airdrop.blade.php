@@ -63,7 +63,7 @@
               <p>
                 <i class="fa fa-telegram fs-50 text-muted" style="color:#00a99d !important;"></i>
               </p>
-              <h1 class="card-title text-uppercase">1. Join Our Telegram Channel</h1>
+              <h1 class="card-title text-uppercase">Join Our Telegram Channel</h1>
 
             </a>
           </div>
@@ -74,7 +74,7 @@
               <p>
                 <i class="fa fa-facebook fs-50 text-muted" style="color:#00a99d !important;"></i>
               </p>
-              <h1 class="card-title text-uppercase">2.Share on Facebook</h1>
+              <h1 class="card-title text-uppercase">Share on Facebook</h1>
               <div class="message">
               </div>
               <!--button id="share" class="btn btn-xl btn-round btn-success text-uppercase ">
@@ -89,7 +89,7 @@
               <p>
                 <i class="icon-tools fs-50 text-muted"></i>
               </p>
-              <h1 class="card-title text-uppercase">3. Fill The Form</h1>
+              <h1 class="card-title text-uppercase">Fill The Form</h1>
             </a>
           </div>
         </div>
