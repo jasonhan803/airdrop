@@ -15,4 +15,10 @@ Route::get('/', 'AirdropController@index');
 
 Route::post('/register', 'AirdropController@register');
 
+Route::get('/dashboard', function(){
+	return view('admin.dashboard');
+});
 
+Route::post('/telegramusers', 'AirdropController@telegramUsers');
+
+Route::post('/verifyTelegramUser', 'AirdropController@verifyTelegram');
