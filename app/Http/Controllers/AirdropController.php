@@ -6,6 +6,7 @@ use App\Models\AirdropModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Telegram\Bot\Laravel\Facades\Telegram;
+use Illuminate\Support\Facades\Mail;
 
 class AirdropController extends Controller
 {
@@ -46,6 +47,21 @@ class AirdropController extends Controller
                     'verify_telegram'=> 0,
                     'created_at'    => date('Y-m-d H:i:s')
                 ]);
+                
+                $telegram_username = $request['telegram'];
+                $email = $request['email'];
+
+                $maildata = [
+                    'tel_user_name' => $telegram_username,
+                    'email_address' => $email
+                ];
+
+                Mail::send(['html' => 'mail.register'], $maildata, function ($message) use ($email, $telegram_username) {
+                $message->to($email, $telegram_username)
+                    ->subject('Lala World : Airdrop Registration');
+                $message->from('hello@lalaworld.io', 'Lala World');
+                });
+
                 die(json_encode(['status'=>'succ','msg'=>'User registered successfully']));
 
             }else{
