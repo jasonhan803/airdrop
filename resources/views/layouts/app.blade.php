@@ -36,6 +36,11 @@
       .text-theme {
         color: #fff !important;
       }
+      i.fa.fa-check-circle {
+          margin-left: 45%;
+          font-size: 80px;
+          color: #00a99d;
+      }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.11.0/d3.js"></script>
     <script src="https://sdk.accountkit.com/en_US/sdk.js"></script>
@@ -98,10 +103,7 @@
             <h1 class="airdrop-amount text-center hidden-sm-down " style="font-size:150px;">0.00</h1>
             <h1 class="airdrop-amount text-center fs fs-80 hidden-md-up ">0.00</h1>
             <div>
-              <h1 class="text-uppercase fs fs-30 ">Join the LALA TOKEN(LALA) Airdrop!</h1>
-              <h1 class="text-uppercase fs fs-30 ">By
-                <a class="social-twitter" href="https://lalaworld.io" target="_blank">lalaworld.io</a>
-              </h1>
+              <h1 class="text-uppercase fs fs-30 ">Join the LALA TOKEN (LALA) Airdrop!</h1>
             </div>
             <br />
             <button class="btn btn-xl btn-round btn-success " data-scrollto="section-airdrop">
