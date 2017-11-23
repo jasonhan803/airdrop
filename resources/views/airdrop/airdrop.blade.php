@@ -65,6 +65,7 @@
         </div>
         <div class="col-12 col-md-6 col-lg-4 task">
           <div class="card card-bordered card-hover-shadow text-center">
+            <a href="javascript:fbShare('Fb Share', 'Facebook share popup', 'http://goo.gl/dS52U', 520, 350)">
             <span id="share" class="card-block">
               <p>
                 <i class="fa fa-facebook fs-50 text-muted" style="color:#00a99d !important;"></i>
@@ -72,10 +73,8 @@
               <h1 class="card-title text-uppercase">2.Share on Facebook</h1>
               <div class="message">
               </div>
-              <!--button id="share" class="btn btn-xl btn-round btn-success text-uppercase ">
-                Post
-              </button-->
             </span>
+          </a>
           </div>
         </div>
         <div class="col-12 col-md-6 col-lg-4">
@@ -93,21 +92,21 @@
       <div id="register" class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="card card-shadowed p-50  mb-0" style="max-width: 70%; margin-left: 20%;">
-            <h5 class="text-uppercase text-center" id="form-head">Fill The Form</h5>
+            <h5 class="text-uppercase text-center">Fill The Form</h5>
             <form class="form-type-material" method="post" action="#" id="register_user">
               <div class="form-group">
                 <div class="input-group">
                   <span class="input-group-addon" id="basic-addon1">@</span>
-                  <input type="text" class="form-control" aria-describedby="basic-addon1" name="telegram" placeholder="Telegram Username">
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" name="telegram" placeholder="Telegram Username" id="telegram">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" class="form-control" name="eth_address" placeholder="ETH Address">
+                  <input type="text" class="form-control" name="eth_address" id="eth_address" placeholder="ETH Address">
                 </div>
               </div>
               <div class="form-group">
-                <input type="email" class="form-control" name="email" placeholder="Email">
+                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
               </div>
               <!-- btn btn-xl btn-success -->
               <button class="btn btn-xl btn-primary" type="submit" style="margin-left: 33%;">Register</button>
@@ -121,44 +120,74 @@
 @endsection()
 @section('footerjs')
 <script type="text/javascript">
+ $(document ).ready(function(){
+    $('#register_user').submit(function(e){
+        e.preventDefault()
+        value = $(this).serialize();
 
-  $('#register_user').submit(function(e){
-    e.preventDefault()
-    value = $(this).serialize();
-    response = JSON.parse(ajax_resp('/register',value))
-    if(response.status == 'succ'){
-      $('#form-head').html('Thank You')
-      $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 19%;">Particapte to Crowdsale</button>')
-    }else{
+        telegram_uname  = $('#telegram').val()
+        eth_address     = $('#eth_address').val()
+        email           = $('#email').val()
 
-    }
-  })
-/*<a href="https://crowdsale.lalaworld.io" target="_blank">*/
-  function ajax_resp(url,data){
-    var tmp = null;
-    $.ajax({
-        'async': false,
-        'type': "POST",
-        'global': false,
-        'dataType': 'html',
-        'url':  url,
-        'data': data,
-        'success': function (resp) {
-            tmp = resp;
+        if(telegram_uname == ''){
+          $.notify('Invalid Telegram Username')
+          return false
+        }
+        
+        eth_regex  = new RegExp('^0x[a-fA-F0-9]{40}$')
+
+        if (eth_address == '' || !eth_regex.test(eth_address)) {
+            $.notify("Invalid Ether Address")
+            return false;
+        }
+
+        email_regex = new RegExp('^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$')
+
+        if (email == '' || !email_regex.test(email)) {
+            $.notify("Invalid Email Address")
+            return false;
+        }
+
+        response = JSON.parse(ajax_resp('/register',value))
+        console.log(response)
+        if(response.status == 'succ'){
+          $('#form-head').html('Thank You')
+          $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button onclick="redirect_crowdsale()" class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 14%;">Particapte to Crowdsale</button>')
+        }else{
+          $.confirm({
+              title: 'Error',
+              content: response.msg,
+              autoClose: 'cancelAction|5000',
+              buttons: {
+                cancelAction: function () {
+                }
+              }
+          });
         }
     });
-
-    return tmp;
-  }
-  /*$('#crowdsale').click(function(e){
-    console.log("Hello")
-    window.open(
-      'https://crowsale.lalaworld.io',
+    function redirect_crowdsale(){
+      window.open(
+      'https://crowdsale.lalaworld.io',
       '_blank'
-    );
-  })
-*/
-  (function(d, s, id){
+      );
+    }
+    function ajax_resp(url,data){
+      var tmp = null;
+      $.ajax({
+          'async': false,
+          'type': "POST",
+          'global': false,
+          'dataType': 'html',
+          'url':  url,
+          'data': data,
+          'success': function (resp) {
+              tmp = resp;
+          }
+      });
+
+      return tmp;
+    }
+    (function(d, s, id){
      var js, fjs = d.getElementsByTagName(s)[0];
      if (d.getElementById(id)) return;
      js = d.createElement(s); js.id = id;
@@ -166,39 +195,28 @@
      fjs.parentNode.insertBefore(js, fjs);
    }(document, 'script', 'facebook-jssdk'));
 
-  //$("#share").on("click", function(e){
-    /*window.open('https://www.facebook.com/dialog/share?app_id=144872242738827&%20channel_url=http://staticxx.facebook.com/connect/xd_arbiter/r/lY4eZXm_YWu.js?version=42#cb=f2ab76abba9ab74&domain=localhost&origin=http://localhost:260/f2a9377a5406c3c&relation=opener&display=popup&e2e={}&hashtag=#ICO #airdrop #eth #crypto #cryptocurrency&href=http://localhost:260&locale=pl_PL&mobile_iframe=false& next=http://staticxx.facebook.com/connect/xd_arbiter/r/lY4eZXm_YWu.js?version=42#cb=f32ed45aa21d6fc&domain=localhost&origin=http://localhost:260/f2a9377a5406c3c&relation=opener&frame=f2943a95be7814c&result="xxRESULTTOKENxx"&sdk=joey','targetWindow','toolbar=no,location=0,status=no,menubar=no,scrollbars=yes,resizable=yes,width=600,height=250'); return false*/
-    /*FB.ui({
-      app_id: '144872242738827',
-      method: 'share',
-      href: 'https://lalaworld.io',
-    }, function(response){});*/
-  //})
+    function pendingBonus(callback) {
+        $.getJSON("public/counter.json", function (obj) {
+          d3.selectAll(".airdrop-amount")
+            .transition()
+            .duration(2500)
+            .on("start", function repeat() {
 
-  function pendingBonus(callback) {
+              d3.active(this)
+                .tween("text", function () {
+                  var that = d3.select(this),
+                    i = d3.interpolateNumber(that.text().replace(/,/g, ""), obj["counter"]);
+                  return function (t) { that.text(format(i(t))); };
+                })
+                .transition()
+                .delay(1500)
+              //.on("start", repeat);
 
-      $.getJSON("public/counter.json", function (obj) {
-        d3.selectAll(".airdrop-amount")
-          .transition()
-          .duration(2500)
-          .on("start", function repeat() {
-
-            d3.active(this)
-              .tween("text", function () {
-                var that = d3.select(this),
-                  i = d3.interpolateNumber(that.text().replace(/,/g, ""), obj["counter"]);
-                return function (t) { that.text(format(i(t))); };
-              })
-              .transition()
-              .delay(1500)
-            //.on("start", repeat);
-
-          });
+            });
       });
     }
-  var format = d3.format(",.2f");
-
-  function getCounter(callback) {
+    var format = d3.format(",.2f");
+    function getCounter(callback) {
 
       $.getJSON("public/counter.json", function (obj) {
         d3.selectAll(".airdrop-amount")
@@ -224,5 +242,11 @@
     var v = $(this).find(".card-title");
     v.html("<del>" + v.html() + "</dev>");
   })
+})
+function fbShare(title, descr, image, winWidth, winHeight) {
+      var winTop = (screen.height / 2) - (winHeight / 2);
+      var winLeft = (screen.width / 2) - (winWidth / 2);
+      window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flalaworld.io%2F&amp;src=sdkpreparse' + title + '&p[summary]=' + descr + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
+  }
 </script>
 @endsection()

@@ -22,6 +22,7 @@
     <link href="{{asset('/public/css/style.css')}}" rel="stylesheet">
     <link href="{{asset('/public/css/core.min.css')}}" rel="stylesheet">
     <link href="{{asset('/public/css/thesaas.min.css')}}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.css">
     <link rel="icon" href="{{asset('/public/img/favicon.ico')}}">
     <style>
       .gradient-header {
@@ -96,7 +97,7 @@
             <br> To join our crowdsale, please fill out the whitelist form. Once the whitelist reaches a max capacity. It will
             be closed.
             <strong>
-              <a class="social-twitter" href="https://lalaworld.io" target="_blank">https://lalaworld.io/#</a>
+              <a class="social-twitter" href="https://lalaworld.io" target="_blank">https://goo.gl/forms/L7V1ybI4DZye5SXP2</a>
             </strong>
           </div>
           <div class="col-12 col-lg-8 offset-lg-2">
@@ -129,6 +130,8 @@
     <script src="{{asset('/public/js/thesaas.min.js')}}"></script>
     <script src="{{asset('/public/js/script.js')}}"></script>
     <script src="{{asset('/public/js/jquery-3.1.1.min.js')}}"></script>
+    <script src="{{asset('/public/js/notify.min.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
     @yield('footerjs')
   </body>
 </html>
