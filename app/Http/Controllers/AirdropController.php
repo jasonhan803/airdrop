@@ -26,9 +26,37 @@ class AirdropController extends Controller
      */
     public function register(Request $request)
     {
-        //$response = Telegram::getMe();
+        $telegram_user  = $request['telegram'];
 
-        print_r($request);
+        $eth_address    = $request['eth_address'];
+
+        $email_id       = $request['email'];
+
+        $check_email    = AirdropModel::where('email_address', '=', $email_id)->select('id')->first();
+
+        $check_tel      = AirdropModel::where('tel_user_name', '=', $telegram_user)->select('id')->first();
+        if($check_email === null){
+
+            if($check_tel === null){
+
+                $create = AirdropModel::create([
+                    'tel_user_name' => $telegram_user,
+                    'email_address' => $email_id,
+                    'eth_address'   => $eth_address,
+                    'verify_telegram'=> 0,
+                    'created_at'    => date('Y-m-d H:i:s')
+                ]);
+                die(json_encode(['status'=>'succ','msg'=>'User registered successfully']));
+
+            }else{
+
+                die(json_encode(['status'=>'err','msg'=>'Telegram Username already exist']));
+            }
+        }
+        else{
+
+            die(json_encode(['status'=>'err','msg'=>'Email Id already exist']));
+        }    
     }
 
     /**
@@ -86,4 +114,5 @@ class AirdropController extends Controller
     {
         //
     }
+        
 }
