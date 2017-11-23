@@ -21,11 +21,6 @@
                 <a href="https://t.me/LaLaWorld" target="_blank">
                   <i class="fa fa-telegram profile-icon" aria-hidden="true"></i>
                 </a>
-                <!--
-                
-                <a href="http://telegram.com/" target="_blank"><i class="fa fa-telegram profile-icon" aria-hidden="true"></i></a>
-                
-                -->
                 <a href="https://www.linkedin.com/in/MyLaLaWorld/" target="_blank">
                   <i class="fa fa-linkedin profile-icon" aria-hidden="true"></i>
                 </a>
@@ -134,6 +129,8 @@
     if(response.status == 'succ'){
       $('#form-head').html('Thank You')
       $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 19%;">Particapte to Crowdsale</button>')
+    }else{
+
     }
   })
 /*<a href="https://crowdsale.lalaworld.io" target="_blank">*/
