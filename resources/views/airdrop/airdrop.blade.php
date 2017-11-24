@@ -7,7 +7,8 @@
   <div class="container text-center">
     <div class="row">
       <div class="text fs fs-20 ">
-        <strong>🚀 IMPORTANT 🚀</strong>
+        <img src="{{asset('/public/img/rocket.png')}}" width="120" alt="rocket"><br>
+        <strong>IMPORTANT</strong>
         <br> To join our crowdsale, please fill out the whitelist form. Once the whitelist reaches a max capacity. It will
         be closed.
         <strong>
@@ -87,6 +88,7 @@
                 <i class="fa fa-telegram fs-50 text-muted" style="color:#00a99d !important;"></i>
               </p>
               <h1 class="card-title text-uppercase">Join Our Telegram Channel</h1>
+              <span>Step 1</span>
 
             </a>
           </div>
@@ -99,8 +101,10 @@
                 <i class="fa fa-facebook fs-50 text-muted" style="color:#00a99d !important;"></i>
               </p>
               <h1 class="card-title text-uppercase">Share on Facebook</h1>
+               <span>Step 2</span>
               <div class="message">
               </div>
+
             </span>
           </a>
           </div>
@@ -112,6 +116,7 @@
                 <i class="fa fa-twitter fs-50 text-muted" style="color:#00a99d !important;"></i>
               </p>
               <h1 class="card-title text-uppercase">Join Us on Twitter</h1>
+               <span>Step 3</span>
 
             </a>
           </div>
