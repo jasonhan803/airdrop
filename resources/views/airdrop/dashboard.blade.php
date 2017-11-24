@@ -1,8 +1,9 @@
 @extends('layouts.app')
 @section('headerjs')
+
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" /><!-- 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> -->
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
 <style type="text/css">
 	.header {
 	    position: relative;
@@ -17,6 +18,18 @@
 </style>
 @endsection()
 @section('content')
+<style type="text/css">
+	.nav {
+    padding-left: 600px;
+    margin-bottom: 0;
+    list-style: none;
+    font-size: 11px;
+}
+.topbar-nav .nav-link:hover, .topbar-nav .nav-link:focus, .topbar-nav .nav-link.active {
+    opacity: 1;
+    background: transparent;
+}
+</style>
 <header class="header bg-fixed gradient-animation">
   <div class="container text-center">
     <div class="row">
@@ -58,9 +71,11 @@
 @section('footerjs')
 	<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
+			var lg = $('.topbar-left:first');
+			lg.css('display','none');
+			
 			TOOLS = {}
 			TOOLS.bcd = $('#telegram_verification').DataTable({
 				"processing": true,
