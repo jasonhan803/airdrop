@@ -33,18 +33,26 @@ class AirdropController extends Controller
 
         $email_id       = $request['email'];
 
+        if($request['twitter'] != ''){
+            $twitter = $request['twitter'];
+        }
+        else{
+           $twitter = 0; 
+        }
+
         $check_email    = AirdropModel::where('email_address', '=', $email_id)->select('id')->first();
 
         $check_tel      = AirdropModel::where('tel_user_name', '=', $telegram_user)->select('id')->first();
         if($check_email === null){
 
             if($check_tel === null){
-
                 $create = AirdropModel::create([
                     'tel_user_name' => $telegram_user,
                     'email_address' => $email_id,
+                    'twitter_user'  => $twitter,
                     'eth_address'   => $eth_address,
                     'verify_telegram'=> 0,
+                    'verify_twitter' => 0,
                     'created_at'    => date('Y-m-d H:i:s')
                 ]);
                 
