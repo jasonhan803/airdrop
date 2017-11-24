@@ -131,13 +131,13 @@
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <input type="text" class="form-control" name="eth_address" id="eth_address" placeholder="ETH Address">
+                  <span class="input-group-addon" id="basic-addon1">@</span>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" name="twitter" placeholder="Twitter Id (Follow us on twitter & get 2x)" id="twitter">
                 </div>
               </div>
               <div class="form-group">
                 <div class="input-group">
-                  <span class="input-group-addon" id="basic-addon1">@</span>
-                  <input type="text" class="form-control" aria-describedby="basic-addon1" name="twitter" placeholder="Twitter Id (Follow us on twitter & get 2x)" id="twitter">
+                  <input type="text" class="form-control" name="eth_address" id="eth_address" placeholder="ETH Address">
                 </div>
               </div>
               <div class="form-group">
@@ -199,7 +199,7 @@
       
         if(response.status == 'succ'){
           $('#form-head').html('Thank You')
-          $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button onclick="redirect_crowdsale()" class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 14%;">Particapte in Crowdsale</button>')
+          $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button onclick="redirect_crowdsale()" class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 14%;">Particapte in Crowdsale</button><p style="margin-left: 31%;padding-top: 4%;font-size: 20px;">Get 5% extra bonus</p>')
         }else{
           $.confirm({
               title: 'Error',
