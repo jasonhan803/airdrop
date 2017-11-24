@@ -111,7 +111,7 @@
               <p>
                 <i class="icon-tools fs-50 text-muted"></i>
               </p>
-              <h1 class="card-title text-uppercase form-head">Fill The Form</h1>
+              <h1 class="card-title text-uppercase">Fill The Form</h1>
             </a>
           </div>
         </div>
@@ -120,7 +120,7 @@
       <div id="register" class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="card card-shadowed p-50  mb-0" style="max-width: 70%; margin-left: 20%;">
-            <h5 class="text-uppercase text-center">Fill The Form</h5>
+            <h5 class="text-uppercase text-center form-head">Fill The Form</h5>
             <form class="form-type-material" method="post" action="#" id="register_user">
               <div class="form-group">
                 <div class="input-group">
