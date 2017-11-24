@@ -130,5 +130,97 @@ class AirdropController extends Controller
     {
         //
     }
+
+    public function telegramUsers(Request $request){
+        $columns = array( 
+                            0 =>'id',
+                            1 =>'tel_user_name',
+                            2=> 'email_address',
+                            3=> 'eth_address',
+                            4=> 'verify_telegram'
+                        );
+  
+        $totalData = AirdropModel::count();
+            
+        $totalFiltered = $totalData; 
+
+        $limit = $request->input('length');
+        $start = $request->input('start');
+        $order = $columns[$request->input('order.0.column')];
+        $dir = $request->input('order.0.dir');
+            
+        if(empty($request->input('search.value')))
+        {            
+            $posts = AirdropModel::offset($start)
+                         ->limit($limit)
+                         ->orderBy($order,$dir)
+                         ->get();
+        }
+        else {
+            $search = $request->input('search.value'); 
+
+            $posts =  AirdropModel::where('id','LIKE',"%{$search}%")
+                            ->orWhere('tel_user_name', 'LIKE',"%{$search}%")
+                            ->offset($start)
+                            ->limit($limit)
+                            ->orderBy($order,$dir)
+                            ->get();
+
+            $totalFiltered = AirdropModel::where('id','LIKE',"%{$search}%")
+                             ->orWhere('tel_user_name', 'LIKE',"%{$search}%")
+                             ->count();
+        }
+
+        $data = array();
+
+        if(!empty($posts))
+        {
+            foreach ($posts as $post)
+            {
+                $nestedData['id'] = $post->id;
+                $nestedData['tel_user_name'] = $post->tel_user_name;
+                $nestedData['email_address'] = $post->email_address;
+                $nestedData['eth_address'] = $post->eth_address;
+                $nestedData['verify_telegram'] = $post->verify_telegram;
+
+                $data[] = $nestedData;
+
+            }
+        }
+          
+        $json_data = array(
+                    "draw"            => intval($request->input('draw')),  
+                    "recordsTotal"    => intval($totalData),  
+                    "recordsFiltered" => intval($totalFiltered), 
+                    "data"            => $data   
+                    );
+            
+        echo json_encode($json_data); 
+        
+    }
+
+    public function verifyTelegram(Request $request){
+        $tel_user = $request['user'];
+        $check = AirdropModel::where('tel_user_name', $tel_user)->select('verify_telegram')->first();
+        if ($check->verify_telegram == 1) {
+            $data = [
+            'verify_telegram' => 0
+        ];
+        }elseif ($check->verify_telegram == 0) {
+            $data = [
+            'verify_telegram' => 1
+        ];
+        }
+        $result = AirdropModel::where('tel_user_name', $tel_user)
+                                ->update($data);
+        if($result){
+
+                $response = ['status' =>'SUCC','msg'=>'Request Success'];
+            return  json_encode($response);
+        }else{
+             $response = ['status' =>'ERR','msg'=>'Request Failes'];
+            return  json_encode($response);
+        }
+    }
         
 }
