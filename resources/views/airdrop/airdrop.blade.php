@@ -105,13 +105,14 @@
           </a>
           </div>
         </div>
-        <div class="col-12 col-md-6 col-lg-4">
+        <div class="col-12 col-md-6 col-lg-4 task">
           <div class="card card-bordered card-hover-shadow text-center">
-            <a class="card-block" href="#" data-scrollto="register">
+            <a class="card-block" target="_blank" href="https://twitter.com/MyLaLaWorld">
               <p>
-                <i class="icon-tools fs-50 text-muted"></i>
+                <i class="fa fa-twitter fs-50 text-muted" style="color:#00a99d !important;"></i>
               </p>
-              <h1 class="card-title text-uppercase">Fill The Form</h1>
+              <h1 class="card-title text-uppercase">Join Us on Twitter</h1>
+
             </a>
           </div>
         </div>
@@ -120,7 +121,7 @@
       <div id="register" class="row">
         <div class="col-lg-8 offset-lg-2">
           <div class="card card-shadowed p-50  mb-0" style="max-width: 70%; margin-left: 20%;">
-            <h5 class="text-uppercase text-center form-head">Fill The Form</h5>
+            <h5 class="text-uppercase text-center" id="form-head">Fill The Form</h5>
             <form class="form-type-material" method="post" action="#" id="register_user">
               <div class="form-group">
                 <div class="input-group">
@@ -131,6 +132,12 @@
               <div class="form-group">
                 <div class="input-group">
                   <input type="text" class="form-control" name="eth_address" id="eth_address" placeholder="ETH Address">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon" id="basic-addon1">@</span>
+                  <input type="text" class="form-control" aria-describedby="basic-addon1" name="twitter" placeholder="Twitter Id (Follow us on twitter & get 2x)" id="twitter">
                 </div>
               </div>
               <div class="form-group">
@@ -151,7 +158,6 @@
       <div class="col-12 col-lg-3">
         <p class="text-center text-lg-left">
           <a href="https://lalaworld.io/">
-            <!-- <img src="assets/img/logo.png" alt="logo"> -->
           </a>
         </p>
       </div>
@@ -193,7 +199,7 @@
       
         if(response.status == 'succ'){
           $('#form-head').html('Thank You')
-          $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button onclick="redirect_crowdsale()" class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 14%;">Particapte to Crowdsale</button>')
+          $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button onclick="redirect_crowdsale()" class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 14%;">Particapte in Crowdsale</button>')
         }else{
           $.confirm({
               title: 'Error',

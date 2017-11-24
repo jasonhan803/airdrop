@@ -16,7 +16,7 @@ class AirdropModel extends Model
     protected $table = 'users';
 
     protected $fillable = [
-        'tel_user_name', 'email_address','eth_address','verify_telegram','created_at','updated_at'
+        'tel_user_name', 'email_address','eth_address','verify_telegram','twitter_user','verify_twitter','created_at','updated_at'
     ];
 
     /**
