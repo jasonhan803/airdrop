@@ -137,7 +137,7 @@
 	                  data: {'user':user, _token: "{{csrf_token()}}"},
 	                  success: function (response) {
 	                    if (response.status == 'SUCC') {
-	                        TOOLS.bcd.ajax.reload();
+	                        location.reload();
 	                    }
 	                    else{
 	                        alert(response.msg);
@@ -160,7 +160,7 @@
 	                  data: {'user':user, _token: "{{csrf_token()}}"},
 	                  success: function (response) {
 	                    if (response.status == 'SUCC') {
-	                        TOOLS.bcd.ajax.reload();
+	                        location.reload();
 	                    }
 	                    else{
 	                        alert(response.msg);
