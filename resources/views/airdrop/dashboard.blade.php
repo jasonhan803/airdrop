@@ -1,7 +1,8 @@
 @extends('layouts.app')
 @section('headerjs')
 <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" />
+<link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.dataTables.min.css" /><!-- 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/> -->
 <style type="text/css">
 	.header {
 	    position: relative;
@@ -30,16 +31,18 @@
 	<section class="section" id="token-profile">
 		<div class="container text-center">
 			<div class="row">
-				<div class="col-md-11">
-					<div class="ibox-content" style="margin-left: 6%">
+				<div class="col-md-12">
+					<div class="ibox-content" style="margin-left: 1%">
 	                    <table width="100%" class="display table table-bordered table-striped table-condensed cf" id="telegram_verification">
 	                        <thead class="cf">
 	                        <tr>
 	                            <th>ID </th>
 	                            <th>Telegram username </th>
+	                            <th>Twitter username </th>
 	                            <th>Email Address </th>
 	                            <th>ETH Address</th>
 	                            <th>Verify Telegram</th>
+	                            <th>Verify Twitter</th>
 	                        </tr>
 	                        </thead>
 	                        <tbody>
@@ -55,6 +58,7 @@
 @section('footerjs')
 	<script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/responsive/2.1.1/js/dataTables.responsive.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script type="text/javascript">
 		$(document).ready(function() {
 			TOOLS = {}
@@ -71,6 +75,7 @@
 	            "columns": [
 	                { "data": "id" },
 	                { "data": "tel_user_name" },
+	                { "data": "twitter_user" },
 	                { "data": "email_address" },
 	                { "data": "eth_address" },
 	                { "data": "verify_telegram",
@@ -82,9 +87,17 @@
 	                            else if(telegram == 0){
 	                            return "<span class=\"label label-danger\">Unverified</span><button type=\"submit\" style='margin-left:6px' class='btn btn-xs btn-primary fathumbup'><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i> </button>";
 	                            }
-	                            else{
-	                            return "<span class=\"label label-warning\">None</span><button type=\"submit\" style='margin-left:6px' class='btn btn-xs btn-primary fathumbup'><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i> </button>";
-	                        }
+	                    }
+	                },
+	                { "data": "verify_twitter",
+	                     "render": function(data, type, row){
+	                        var twitter = JSON.parse(data);
+	                        if(twitter == 1){
+	                            return "<span class=\"label label-primary\">Verified</span><button type=\"submit\" style='margin-left:6px' class='btn btn-xs btn-primary fathumbup_tweet'><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i> </button>";
+	                            }
+	                            else if(twitter == 0){
+	                            return "<span class=\"label label-danger\">Unverified</span><button type=\"submit\" style='margin-left:6px' class='btn btn-xs btn-primary fathumbup_tweet'><i class=\"fa fa-pencil\" aria-hidden=\"true\"></i> </button>";
+	                            }
 	                    }
 	                }
 	            ]
@@ -104,6 +117,29 @@
 	                  type: 'post',
 	                  dataType: 'json',
 	                  url: '/verifyTelegramUser',
+	                  data: {'user':user, _token: "{{csrf_token()}}"},
+	                  success: function (response) {
+	                    if (response.status == 'SUCC') {
+	                        location.reload();
+	                    }
+	                    else{
+	                        alert(response.msg);
+	                     }
+	                    }
+	                });
+	        });
+
+	        $( "body" ).on( "click", ".fathumbup_tweet", function(e) {
+				_this =$(this);
+	            TOOLS.dt = $(this).html();
+
+	            e.preventDefault();
+	            var nTr = TOOLS.bcd.row(_this.parent().parent()).data();
+	            var user = nTr.twitter_user;
+	                $.ajax({
+	                  type: 'post',
+	                  dataType: 'json',
+	                  url: '/verifyTwitterUser',
 	                  data: {'user':user, _token: "{{csrf_token()}}"},
 	                  success: function (response) {
 	                    if (response.status == 'SUCC') {

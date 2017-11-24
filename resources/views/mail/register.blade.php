@@ -19,17 +19,24 @@
                             </tr>
                             <tr>
                                 <td style="padding: 0 0 20px;vertical-align: top;">
-                                    <h3 style="font-size: 18px;margin: 40px 0 0; font-weight: normal">Hello there,</h3>
+                                    <h3 style="text-align:center;font-size: 18px;margin: 40px 0 0; font-weight: normal">Welcome to LALA World Community</h3>
                                 </td>
                             </tr>
                             <tr>
                                 <td style="padding: 0 0 20px; font-size: 13px; line-height: 1.5; text-align: center;">
-                                    You have registered with {{ $email_address }} this email and {{ $tel_user_name }}
+                            <span style="font-size:14px">Thank you for participating in LALA Airdrop and becoming a part of our community.
+                            </span><br/><br/>
+
+                            <span>LALA World is an Ecosystem of real-life partnerships with governments, NGO’s, local communities and an integration of biometrics, blockchain and distributed ledger technology that aims towards financial inclusion.</span>
                                 </td>
                             </tr>
 
                             <tr>
                                 <td style="padding: 0 0 20px; font-size: 13px; line-height: 1.5; text-align: center;">
+                            To know more:
+                            <br/>
+                            <a href="https://lalaworld.io">Website</a>
+                            <a href="http://lalaworld.io/whitepaper.pdf">Whitepaper</a>
                                 </td>
                             </tr>
 
@@ -45,22 +52,9 @@
                 <table width="590">
                     <tbody>
                     <tr>
-                        <td style="background: #F6F6F6; color:#000; padding:20px" width="50%"><div style="font-size: 14px; font-weight:bold; padding-bottom:10px">Headquarters :</div> <span style="font-size:12px">53B, Grange Road, 18-03, Spring Grove, Singapore, 249567</span>
-
-                        </td>
-                        <td style="background:#F6F6F6; color:#000; padding:20px" width="50%">
-                            <div style="font-size: 14px; font-weight:bold; padding-bottom:10px">Support :</div>
-                            <table style="color: #000">
-                                <tbody><tr>
-                                    <td style="font-size:12px; color:#000;"><span>Call </span> @ 011-42237360</td>
-                                </tr>
-                                <tr>
-                                    <td style="font-size:12px;color:#000;">
-                                        <span>Email </span>  @ hello@lalaworld.io
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
+                        <td style="background: #F6F6F6 ;text-align: center; color:#000; padding:20px">
+                            <div style="font-size: 14px; font-weight:bold; padding-bottom:10px">Support : hello@lalaworld.io</div>
+                            <span style="font-size:12px">Singapore | India | Malaysia | Dubai | Bangladesh</span>
                         </td>
                     </tr>
                     </tbody>

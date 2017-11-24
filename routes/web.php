@@ -22,3 +22,5 @@ Route::get('/dashboard', function(){
 Route::post('/telegramusers', 'AirdropController@telegramUsers');
 
 Route::post('/verifyTelegramUser', 'AirdropController@verifyTelegram');
+
+Route::post('/verifyTwitterUser', 'AirdropController@verifyTwitter');

@@ -135,9 +135,11 @@ class AirdropController extends Controller
         $columns = array( 
                             0 =>'id',
                             1 =>'tel_user_name',
-                            2=> 'email_address',
-                            3=> 'eth_address',
-                            4=> 'verify_telegram'
+                            2 =>'twitter_user',
+                            3=> 'email_address',
+                            4=> 'eth_address',
+                            5=> 'verify_telegram',
+                            6=> 'verify_twitter'
                         );
   
         $totalData = AirdropModel::count();
@@ -179,9 +181,11 @@ class AirdropController extends Controller
             {
                 $nestedData['id'] = $post->id;
                 $nestedData['tel_user_name'] = $post->tel_user_name;
+                $nestedData['twitter_user'] = $post->twitter_user;
                 $nestedData['email_address'] = $post->email_address;
                 $nestedData['eth_address'] = $post->eth_address;
                 $nestedData['verify_telegram'] = $post->verify_telegram;
+                $nestedData['verify_twitter'] = $post->verify_twitter;
 
                 $data[] = $nestedData;
 
@@ -212,6 +216,30 @@ class AirdropController extends Controller
         ];
         }
         $result = AirdropModel::where('tel_user_name', $tel_user)
+                                ->update($data);
+        if($result){
+
+                $response = ['status' =>'SUCC','msg'=>'Request Success'];
+            return  json_encode($response);
+        }else{
+             $response = ['status' =>'ERR','msg'=>'Request Failes'];
+            return  json_encode($response);
+        }
+    }
+
+    public function verifyTwitter(Request $request){
+        $tweet_user = $request['user'];
+        $check = AirdropModel::where('twitter_user', $tweet_user)->select('verify_twitter')->first();
+        if ($check->verify_twitter == 1) {
+            $data = [
+            'verify_twitter' => 0
+        ];
+        }elseif ($check->verify_twitter == 0) {
+            $data = [
+            'verify_twitter' => 1
+        ];
+        }
+        $result = AirdropModel::where('twitter_user', $tweet_user)
                                 ->update($data);
         if($result){
 
