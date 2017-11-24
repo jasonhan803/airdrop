@@ -17,7 +17,7 @@
       </div>
       <div class="col-12 col-lg-8 offset-lg-2">
         <h1 class="airdrop-amount text-center hidden-sm-down " style="font-size:150px;">0.00</h1>
-        <h1 class="airdrop-amount text-center fs fs-80 hidden-md-up ">0.00</h1>
+        <h1 class="airdrop-amount text-center fs fs-80 hidden-md-up ">0</h1>
         <div>
           <h1 class="text-uppercase fs fs-30 ">Join the LALA TOKEN (LALA) Airdrop!</h1>
         </div>
@@ -291,7 +291,7 @@
 })
  function redirect_crowdsale(){
       window.open(
-      'https://crowdsale.lalaworld.io',
+      'https://lalaworld.io',
       '_blank'
       );
     }
