@@ -111,7 +111,7 @@
               <p>
                 <i class="icon-tools fs-50 text-muted"></i>
               </p>
-              <h1 class="card-title text-uppercase">Fill The Form</h1>
+              <h1 class="card-title text-uppercase form-head">Fill The Form</h1>
             </a>
           </div>
         </div>
