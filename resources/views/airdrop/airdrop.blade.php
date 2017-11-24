@@ -204,7 +204,7 @@
       
         if(response.status == 'succ'){
           $('#form-head').html('Thank You')
-          $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button onclick="redirect_crowdsale()" class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 14%;">Particapte in Crowdsale</button><p style="margin-left: 31%;padding-top: 4%;font-size: 20px;">Get 5% extra bonus</p>')
+          $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button onclick="redirect_crowdsale()" class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 14%;">Participate in Crowdsale</button><p style="margin-left: 31%;padding-top: 4%;font-size: 20px;">Get 5% extra bonus</p>')
         }else{
           $.confirm({
               title: 'Error',
