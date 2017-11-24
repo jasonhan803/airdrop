@@ -209,9 +209,9 @@
           $.confirm({
               title: 'Error',
               content: response.msg,
-              autoClose: 'cancelAction|5000',
+              autoClose: 'cancellation|5000',
               buttons: {
-                cancelAction: function () {
+                cancellation: function () {
                 }
               }
           });
