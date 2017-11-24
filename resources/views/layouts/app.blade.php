@@ -72,7 +72,7 @@
                     <a class="nav-link" href="https://lalaworld.io/whitepaper.pdf" target="_blank">Whitepaper</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="http://invest.lalaworld.io" target="_blank">Crowdsale</a>
+                    <a class="nav-link" href="http://crowdsale.lalaworld.io" target="_blank">Crowdsale</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#" data-scrollto="token-profile">Token Profile</a>
