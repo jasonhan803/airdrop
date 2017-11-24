@@ -17,7 +17,7 @@ Route::post('/register', 'AirdropController@register');
 
 Route::get('/dashboard', function(){
 	return view('airdrop.dashboard');
-})->middleware('auth');
+});
 
 Route::post('/telegramusers', 'AirdropController@telegramUsers');
 
@@ -26,7 +26,5 @@ Route::post('/verifyTelegramUser', 'AirdropController@verifyTelegram');
 Route::post('/verifyTwitterUser', 'AirdropController@verifyTwitter');
 
 Route::get('/logout','Auth\LoginController@logout');
-
-Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
