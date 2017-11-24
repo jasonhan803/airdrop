@@ -206,12 +206,6 @@
           });
         }
     });
-    function redirect_crowdsale(){
-      window.open(
-      'https://crowdsale.lalaworld.io',
-      '_blank'
-      );
-    }
     function ajax_resp(url,data){
       var tmp = null;
       $.ajax({
@@ -284,6 +278,12 @@
     v.html("<del>" + v.html() + "</dev>");
   })
 })
+ function redirect_crowdsale(){
+      window.open(
+      'https://crowdsale.lalaworld.io',
+      '_blank'
+      );
+    }
 function fbShare(title, descr, image, winWidth, winHeight) {
       var winTop = (screen.height / 2) - (winHeight / 2);
       var winLeft = (screen.width / 2) - (winWidth / 2);
