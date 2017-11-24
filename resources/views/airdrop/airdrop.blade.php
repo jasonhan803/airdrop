@@ -1,5 +1,33 @@
 @extends('layouts.app')
 @section('content')
+<header class="header bg-fixed gradient-animation">
+    <div id='stars'></div>
+    <div id='stars2'></div>
+    <div id='stars3'></div>
+  <div class="container text-center">
+    <div class="row">
+      <div class="text fs fs-20 ">
+        <strong>🚀 IMPORTANT 🚀</strong>
+        <br> To join our crowdsale, please fill out the whitelist form. Once the whitelist reaches a max capacity. It will
+        be closed.
+        <strong>
+          <a class="social-twitter" href="https://lalaworld.io" target="_blank">https://goo.gl/forms/L7V1ybI4DZye5SXP2</a>
+        </strong>
+      </div>
+      <div class="col-12 col-lg-8 offset-lg-2">
+        <h1 class="airdrop-amount text-center hidden-sm-down " style="font-size:150px;">0.00</h1>
+        <h1 class="airdrop-amount text-center fs fs-80 hidden-md-up ">0.00</h1>
+        <div>
+          <h1 class="text-uppercase fs fs-30 ">Join the LALA TOKEN (LALA) Airdrop!</h1>
+        </div>
+        <br />
+        <button class="btn btn-xl btn-round btn-success " data-scrollto="section-airdrop">
+          start
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
 <main class="main-content">
   <section class="section" id="token-profile">
     <div class="container text-center">
@@ -117,6 +145,19 @@
     </div>
   </section>
 </main>
+<footer class="site-footer">
+  <div class="container">
+    <div class="row gap-y align-items-center">
+      <div class="col-12 col-lg-3">
+        <p class="text-center text-lg-left">
+          <a href="https://lalaworld.io/">
+            <!-- <img src="assets/img/logo.png" alt="logo"> -->
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
 @endsection()
 @section('footerjs')
 <script type="text/javascript">
@@ -149,7 +190,7 @@
         }
 
         response = JSON.parse(ajax_resp('/register',value))
-        console.log(response)
+      
         if(response.status == 'succ'){
           $('#form-head').html('Thank You')
           $('#register_user').html('<i class="fa fa-check-circle" aria-hidden="true"></i><br><br><button onclick="redirect_crowdsale()" class="btn btn-xl btn-primary" id="crowdsale" type="button" style="margin-left: 14%;">Particapte to Crowdsale</button>')
@@ -247,6 +288,6 @@ function fbShare(title, descr, image, winWidth, winHeight) {
       var winTop = (screen.height / 2) - (winHeight / 2);
       var winLeft = (screen.width / 2) - (winWidth / 2);
       window.open('https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Flalaworld.io%2F&amp;src=sdkpreparse' + title + '&p[summary]=' + descr + '&p[images][0]=' + image, 'sharer', 'top=' + winTop + ',left=' + winLeft + ',toolbar=0,status=0,width=' + winWidth + ',height=' + winHeight);
-  }
+}
 </script>
 @endsection()

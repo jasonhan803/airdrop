@@ -6,12 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="keywords" content="">
-    <!-- <meta property="og:title" content="LALA World"/>
-    <meta name="author" content="Sankalp Shangari">
-    <meta property="og:site_name" content="LALA World">
-    <meta property="og:description" content="Empowering the unbanked with an Ecosystem, not only for financial inclusion but inclusive health, inclusive education, employment( the entire Ethos to make self sustainaible  Website: https://lalaworld.io">
-    <meta property="og:image" content="{{asset('/public/img/logo-icon.png')}}"> -->
-
     <meta property="og:url" content="https://lalaworld.io">
     <meta property="og:type" content="website">
     <meta property="og:title" content="LALA World Airdrop">
@@ -90,35 +84,6 @@
         </div>
       </div>
     </nav>
-    <header class="header bg-fixed gradient-animation">
-        <div id='stars'></div>
-        <div id='stars2'></div>
-        <div id='stars3'></div>
-      <div class="container text-center">
-        <div class="row">
-          <div class="text fs fs-20 ">
-            <strong>🚀 IMPORTANT 🚀</strong>
-            <br> To join our crowdsale, please fill out the whitelist form. Once the whitelist reaches a max capacity. It will
-            be closed.
-            <strong>
-              <a class="social-twitter" href="https://lalaworld.io" target="_blank">https://goo.gl/forms/L7V1ybI4DZye5SXP2</a>
-            </strong>
-          </div>
-          <div class="col-12 col-lg-8 offset-lg-2">
-            <h1 class="airdrop-amount text-center hidden-sm-down " style="font-size:150px;">0.00</h1>
-            <h1 class="airdrop-amount text-center fs fs-80 hidden-md-up ">0.00</h1>
-            <div>
-              <h1 class="text-uppercase fs fs-30 ">Join the LALA TOKEN (LALA) Airdrop!</h1>
-            </div>
-            <br />
-            <button class="btn btn-xl btn-round btn-success " data-scrollto="section-airdrop">
-              start
-            </button>
-          </div>
-        </div>
-
-      </div>
-    </header>
     @yield('content')
     <section id="footer" class="footer-section">
       <div class="container footer-width">
