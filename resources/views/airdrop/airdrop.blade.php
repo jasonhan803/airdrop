@@ -11,7 +11,7 @@
         <br> To join our crowdsale, please fill out the whitelist form. Once the whitelist reaches a max capacity. It will
         be closed.
         <strong>
-          <a class="social-twitter" href="https://lalaworld.io" target="_blank">https://goo.gl/forms/L7V1ybI4DZye5SXP2</a>
+          <a class="social-twitter" href="https://goo.gl/forms/L7V1ybI4DZye5SXP2" target="_blank">https://goo.gl/forms/L7V1ybI4DZye5SXP2</a>
         </strong>
       </div>
       <div class="col-12 col-lg-8 offset-lg-2">
