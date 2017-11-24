@@ -13,7 +13,7 @@ class AirdropModel extends Model
      */
     public $timestamps = false;
 
-    protected $table = 'users';
+    protected $table = 'users_air';
 
     protected $fillable = [
         'tel_user_name', 'email_address','eth_address','verify_telegram','twitter_user','verify_twitter','created_at','updated_at'

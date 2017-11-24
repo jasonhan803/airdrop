@@ -40,7 +40,9 @@
     </div>
   </div>
 </header>
-<main class="main-content">
+<main class="main-content"><!-- 
+<div style="margin-left: 1000px;"><a href="{{url('/logout')}}"><i class="fa fa-sign-out"></i>
+ Logout</a></div> -->
 	<section class="section" id="token-profile">
 		<div class="container text-center">
 			<div class="row">
@@ -75,7 +77,7 @@
 		$(document).ready(function() {
 			var lg = $('.topbar-left:first');
 			lg.css('display','none');
-			
+			$('.topbar-nav').append('<li class="nav-item"><a class="nav-link" href="airdrop.lalaworld.io/logout"><i class="fa fa-sign-out"></i>OUT</a></li>');
 			TOOLS = {}
 			TOOLS.bcd = $('#telegram_verification').DataTable({
 				"processing": true,
@@ -135,7 +137,7 @@
 	                  data: {'user':user, _token: "{{csrf_token()}}"},
 	                  success: function (response) {
 	                    if (response.status == 'SUCC') {
-	                        location.reload();
+	                        TOOLS.bcd.ajax.reload();
 	                    }
 	                    else{
 	                        alert(response.msg);
@@ -158,7 +160,7 @@
 	                  data: {'user':user, _token: "{{csrf_token()}}"},
 	                  success: function (response) {
 	                    if (response.status == 'SUCC') {
-	                        location.reload();
+	                        TOOLS.bcd.ajax.reload();
 	                    }
 	                    else{
 	                        alert(response.msg);
