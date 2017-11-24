@@ -50,7 +50,7 @@
                 <a href="https://t.me/LaLaWorld" target="_blank">
                   <i class="fa fa-telegram profile-icon" aria-hidden="true"></i>
                 </a>
-                <a href="https://www.linkedin.com/in/MyLaLaWorld/" target="_blank">
+                <a href="https://www.linkedin.com/company/13426271/" target="_blank">
                   <i class="fa fa-linkedin profile-icon" aria-hidden="true"></i>
                 </a>
                 <a href="http://bit.ly/2yiWRE4" target="_blank">
@@ -289,12 +289,12 @@
     v.html("<del>" + v.html() + "</dev>");
   })
 })
- function redirect_crowdsale(){
+function redirect_crowdsale(){
       window.open(
       'https://lalaworld.io',
       '_blank'
       );
-    }
+}
 function fbShare(title, descr, image, winWidth, winHeight) {
       var winTop = (screen.height / 2) - (winHeight / 2);
       var winLeft = (screen.width / 2) - (winWidth / 2);
