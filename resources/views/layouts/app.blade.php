@@ -101,6 +101,14 @@
     <script src="{{asset('/public/js/jquery-3.1.1.min.js')}}"></script>
     <script src="{{asset('/public/js/notify.min.js')}}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.0/jquery-confirm.min.js"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106767841-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-106767841-1');
+    </script>
     @yield('footerjs')
   </body>
 </html>
