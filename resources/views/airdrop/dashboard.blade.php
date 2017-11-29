@@ -77,7 +77,7 @@
 		$(document).ready(function() {
 			var lg = $('.topbar-left:first');
 			lg.css('display','none');
-			$('.topbar-nav').append('<li class="nav-item"><a class="nav-link" href="airdrop.lalaworld.io/logout"><i class="fa fa-sign-out"></i>OUT</a></li>');
+			$('.topbar-nav').append('<li class="nav-item"><a class="nav-link" href="/logout"><i class="fa fa-sign-out"></i>OUT</a></li>');
 			TOOLS = {}
 			TOOLS.bcd = $('#telegram_verification').DataTable({
 				"processing": true,

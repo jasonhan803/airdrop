@@ -3,10 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\AirdropModel;
+use App\Models\AdminModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Telegram\Bot\Laravel\Facades\Telegram;
 use Illuminate\Support\Facades\Mail;
+
+session_start();
 
 class AirdropController extends Controller
 {
@@ -19,12 +22,6 @@ class AirdropController extends Controller
     {
        return view('airdrop.airdrop');
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function register(Request $request)
     {
         $telegram_user  = $request['telegram'];
@@ -83,61 +80,55 @@ class AirdropController extends Controller
         }    
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function login(Request $request)
     {
-        //
+        if(isset($_SESSION['username']))
+            return redirect('/dashboard'); 
+        else
+            return view('airdrop.login');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\AirdropModel  $airdropModel
-     * @return \Illuminate\Http\Response
-     */
-    public function show(AirdropModel $airdropModel)
-    {
-        //
+    public function dashboard()
+    { 
+        if(isset($_SESSION['username']))
+            return view('airdrop.dashboard'); 
+        else
+            return redirect('/login');
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\AirdropModel  $airdropModel
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(AirdropModel $airdropModel)
+    public function admin_login_check(Request $request)
     {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\AirdropModel  $airdropModel
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, AirdropModel $airdropModel)
-    {
-        //
-    }
+        $user  = $request['uname'];
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\AirdropModel  $airdropModel
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(AirdropModel $airdropModel)
-    {
-        //
-    }
+        $paswd = $request['passwd'];
+
+        if($user == '')
+            die(json_encode(['status'=>'err','msg'=>'Username is blank']));
+        else if ($paswd == '')
+            die(json_encode(['status'=>'err','msg'=>'Password is blank']));
+        else{
+
+            $login = AdminModel::where('username', '=', $user)->select('id','username','password')->first();
+            
+            if($login === null)
+                die(json_encode(['status'=>'err','msg'=>'Username is invalid']));
+            else{
+
+                 $pass  = \Hash::check($paswd, $login->password);
+
+                 if(!$pass)
+                    die(json_encode(['status'=>'err','msg'=>'Password is invalid']));
+                else{
+                    $uname = $login->username;
+                    $id    = $login->id;
+                    $_SESSION = ['id'=>$id, 'username'=>$uname];
+
+                    die(json_encode(['status'=>'succ','data'=>['redirect_url'=>'/dashboard'],'msg'=>'User login successfully']));
+                }
+            }
+        }
+    } 
 
     public function telegramUsers(Request $request){
         $columns = array( 
@@ -208,7 +199,6 @@ class AirdropController extends Controller
                     );
             
         echo json_encode($json_data); 
-        
     }
 
     public function verifyTelegram(Request $request){
@@ -257,6 +247,13 @@ class AirdropController extends Controller
              $response = ['status' =>'ERR','msg'=>'Request Failes'];
             return  json_encode($response);
         }
+    }
+
+    public function logout(){
+
+        session_destroy();
+
+        return redirect('/login');
     }
         
 }

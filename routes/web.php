@@ -15,9 +15,9 @@ Route::get('/', 'AirdropController@index');
 
 Route::post('/register', 'AirdropController@register');
 
-Route::get('/dashboard', function(){
-	return view('airdrop.dashboard');
-});
+Route::post('/login_check', 'AirdropController@admin_login_check');
+
+Route::get('/dashboard', 'AirdropController@dashboard');
 
 Route::post('/telegramusers', 'AirdropController@telegramUsers');
 
@@ -25,6 +25,7 @@ Route::post('/verifyTelegramUser', 'AirdropController@verifyTelegram');
 
 Route::post('/verifyTwitterUser', 'AirdropController@verifyTwitter');
 
-Route::get('/logout','Auth\LoginController@logout');
+Route::get('/login', 'AirdropController@login');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/logout', 'AirdropController@logout');
+

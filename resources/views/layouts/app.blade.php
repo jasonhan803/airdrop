@@ -72,7 +72,7 @@
                     <a class="nav-link" href="https://lalaworld.io/whitepaper.pdf" target="_blank">Whitepaper</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="http://lalaworld.io" target="_blank">Crowdsale</a>
+                    <a class="nav-link" href="https://tokensale.lalaworld.io/" target="_blank">Crowdsale</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#" data-scrollto="token-profile">Token Profile</a>
@@ -85,7 +85,7 @@
       </div>
     </nav>
     @yield('content')
-    <section id="footer" class="footer-section">
+    <!-- <section id="footer" class="footer-section">
       <div class="container footer-width">
         <hr class="footer white" width="100%">
         <div class="container text-center footer-width footer-bottom">
@@ -94,7 +94,7 @@
           </p>
         </div>
       </div>
-    </section>
+    </section> -->
     <script src="{{asset('/public/js/core.min.js')}}"></script>
     <script src="{{asset('/public/js/thesaas.min.js')}}"></script>
     <script src="{{asset('/public/js/script.js')}}"></script>
