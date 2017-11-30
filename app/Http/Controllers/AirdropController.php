@@ -20,7 +20,7 @@ class AirdropController extends Controller
      */
     public function index()
     {
-       return view('airdrop.airdrop');
+       return view('airdrop.close');
     }
     public function register(Request $request)
     {

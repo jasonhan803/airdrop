@@ -85,16 +85,6 @@
       </div>
     </nav>
     @yield('content')
-    <!-- <section id="footer" class="footer-section">
-      <div class="container footer-width">
-        <hr class="footer white" width="100%">
-        <div class="container text-center footer-width footer-bottom">
-          <p>
-          <img class="footer-logo" src="{{asset('/public/img/logo-icon.png')}}">
-          </p>
-        </div>
-      </div>
-    </section> -->
     <script src="{{asset('/public/js/core.min.js')}}"></script>
     <script src="{{asset('/public/js/thesaas.min.js')}}"></script>
     <script src="{{asset('/public/js/script.js')}}"></script>
